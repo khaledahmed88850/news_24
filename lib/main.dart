@@ -18,6 +18,7 @@ class NewsApp extends StatelessWidget {
       builder:
           (context, child) => MaterialApp(
             debugShowCheckedModeBanner: false,
+            theme: ThemeData(fontFamily: 'SF Pro Display'),
             onGenerateRoute: onGenerateRoute,
             initialRoute: SignInView.routeName,
           ),

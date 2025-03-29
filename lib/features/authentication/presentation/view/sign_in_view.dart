@@ -5,6 +5,13 @@ class SignInView extends StatelessWidget {
   static const routeName = '/sign-in';
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Center(child: Text('Sign In View')));
+    return const Scaffold(
+      body: Center(
+        child: Text(
+          'Sign In View',
+          style: TextStyle(fontFamily: 'SF Pro Display', color: Colors.black),
+        ),
+      ),
+    );
   }
 }
