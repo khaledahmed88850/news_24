@@ -10,6 +10,7 @@ import 'package:news_24/features/authentication/presentation/view/widgets/custom
 import 'package:news_24/features/authentication/presentation/view/widgets/custom_text_form_field.dart';
 
 import '../../../data/models/user_model.dart';
+import 'google_login_widget.dart';
 
 class SignInViewBody extends StatefulWidget {
   const SignInViewBody({super.key});
@@ -47,6 +48,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
               ),
               SizedBox(height: 40.h),
               CustomTextFormField(
+                textInputType: TextInputType.emailAddress,
                 hintText: 'Email',
                 onSaved: (value) {
                   mail = value;
@@ -54,6 +56,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
               ),
               SizedBox(height: 30.h),
               CustomTextFormField(
+                textInputType: TextInputType.text,
                 obscureText: true,
                 hintText: 'Password',
                 onSaved: (value) {
@@ -70,7 +73,9 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                       email: mail!,
                       uId: password!,
                     );
-                    context.read<SignInCubit>().signIn(userModel);
+                    context.read<SignInCubit>().signInWithEmailAndPassword(
+                      userModel,
+                    );
                   } else {
                     autovalidateMode = AutovalidateMode.always;
                   }
@@ -79,31 +84,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
               SizedBox(height: 20.h),
               const Divider(thickness: 1.5),
               SizedBox(height: 20.h),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  backgroundColor: const Color(0xFFE5DFE6),
-                  maximumSize: Size(200.w, 60.h),
-                ),
-                onPressed: () {},
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 30.w,
-                      child: Image.asset(
-                        Assets.assetsImagesGoogleIcon,
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Text(
-                      'Sign in with Google',
-                      style: Styles.medium14.copyWith(color: Colors.black),
-                    ),
-                  ],
-                ),
-              ),
+              const GoogleLoginWidget(),
               SizedBox(height: 60.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

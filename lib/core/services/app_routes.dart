@@ -6,6 +6,7 @@ import 'package:news_24/features/authentication/presentation/cubit/sign_in_cubit
 import 'package:news_24/features/authentication/presentation/cubit/sign_up_cubit/sign_up_cubit.dart';
 import 'package:news_24/features/authentication/presentation/view/sign_in_view.dart';
 import 'package:news_24/features/authentication/presentation/view/sign_up_view.dart';
+import 'package:news_24/features/home/presentation/view/home_view.dart';
 
 Route onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -25,6 +26,8 @@ Route onGenerateRoute(RouteSettings settings) {
               child: const SignUpView(),
             ),
       );
+    case HomeView.routeName:
+      return MaterialPageRoute(builder: (_) => const HomeView());
     default:
       return MaterialPageRoute(builder: (_) => const Placeholder());
   }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:news_24/features/authentication/presentation/cubit/sign_in_cubit/sign_in_cubit.dart';
 import 'package:news_24/features/authentication/presentation/view/widgets/sign_in_view_body.dart';
+import 'package:news_24/features/home/presentation/view/home_view.dart';
 
 class SignInView extends StatelessWidget {
   const SignInView({super.key});
@@ -14,16 +15,11 @@ class SignInView extends StatelessWidget {
         child: BlocConsumer<SignInCubit, SignInState>(
           listener: (context, state) {
             if (state is SignInSuccess) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  backgroundColor: Colors.lightGreen,
-                  content: Text('Sign In Success'),
-                ),
-              );
+              Navigator.pushReplacementNamed(context, HomeView.routeName);
             } else if (state is SignInFailure) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  backgroundColor: Colors.red,
+                  backgroundColor: Colors.black54,
                   content: Text(state.message),
                 ),
               );

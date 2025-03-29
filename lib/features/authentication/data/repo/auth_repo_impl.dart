@@ -68,4 +68,26 @@ class AuthRepoImpl implements AuthRepo {
       data: user.toJson(),
     );
   }
+
+  @override
+  Future<Either<Failures, UserModel>> signInWithGoogle() async {
+    try {
+      User user = await authServices.signInWithGoogle();
+      UserModel userModel = UserModel.fromirebaseUser(user);
+      var dataExists = await firestoreServices.ifDataExists(
+        path: BackendEndPoints.users,
+        documentId: userModel.uId,
+      );
+      if (dataExists) {
+        await getUserData(uId: userModel.uId);
+      } else {
+        await addUserData(user: userModel);
+      }
+      return right(userModel);
+    } catch (e) {
+      return left(
+        ServerFailure(message: 'Something went wrong , try again later'),
+      );
+    }
+  }
 }

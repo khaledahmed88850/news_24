@@ -46,6 +46,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               ),
               SizedBox(height: 30.h),
               CustomTextFormField(
+                textInputType: TextInputType.emailAddress,
                 hintText: 'Email',
                 onSaved: (value) {
                   mail = value;
@@ -53,6 +54,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               ),
               SizedBox(height: 30.h),
               CustomTextFormField(
+                textInputType: TextInputType.text,
                 obscureText: true,
                 hintText: 'Password',
                 onSaved: (value) {
@@ -78,31 +80,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               SizedBox(height: 20.h),
               const Divider(thickness: 1.5),
               SizedBox(height: 20.h),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  backgroundColor: const Color(0xFFE5DFE6),
-                  maximumSize: Size(200.w, 60.h),
-                ),
-                onPressed: () {},
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 30.w,
-                      child: Image.asset(
-                        Assets.assetsImagesGoogleIcon,
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Text(
-                      'Sign in with Google',
-                      style: Styles.medium14.copyWith(color: Colors.black),
-                    ),
-                  ],
-                ),
-              ),
+
               SizedBox(height: 60.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
