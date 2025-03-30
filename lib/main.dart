@@ -6,6 +6,7 @@ import 'package:news_24/core/services/app_routes.dart';
 import 'package:news_24/core/services/custom_bloc_observer.dart';
 import 'package:news_24/core/services/dependency_injection.dart';
 import 'package:news_24/features/home/presentation/view/home_view.dart';
+import 'package:news_24/features/home/presentation/view/main_view.dart';
 import 'package:news_24/firebase_options.dart';
 
 void main() async {
@@ -29,7 +30,7 @@ class NewsApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: ThemeData(fontFamily: 'SF Pro Display'),
             onGenerateRoute: onGenerateRoute,
-            initialRoute: HomeView.routeName,
+            initialRoute: MainView.routeName,
           ),
     );
   }

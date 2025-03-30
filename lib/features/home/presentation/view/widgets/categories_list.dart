@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_24/core/utils/app_colors.dart';
 import 'package:news_24/core/utils/text_styles.dart';
+import 'package:news_24/features/home/presentation/cubit/news_cubit.dart';
 
 class CategoriesList extends StatefulWidget {
   const CategoriesList({super.key});
@@ -15,7 +17,7 @@ class _CategoriesListState extends State<CategoriesList> {
   Widget build(BuildContext context) {
     return ListView.builder(
       scrollDirection: Axis.horizontal,
-      itemCount: 10,
+      itemCount: categories.length,
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.only(right: 10),
@@ -28,11 +30,18 @@ class _CategoriesListState extends State<CategoriesList> {
             ),
             onPressed: () {
               setState(() {
-                selectedIndex = index;
+                if (selectedIndex == index) {
+                  return;
+                } else {
+                  context.read<NewsCubit>().getNews(
+                    category: categories[index],
+                  );
+                  selectedIndex = index;
+                }
               });
             },
             child: Text(
-              'Science',
+              categories[index],
               style: Styles.medium14.copyWith(
                 color:
                     index == selectedIndex
@@ -45,4 +54,14 @@ class _CategoriesListState extends State<CategoriesList> {
       },
     );
   }
+
+  List<String> categories = [
+    'General',
+    'Business',
+    'Entertainment',
+    'Health',
+    'Science',
+    'Sports',
+    'Technology',
+  ];
 }

@@ -9,7 +9,14 @@ class ApiServices {
   ApiServices({required this.dio});
 
   Future<List<dynamic>> getData({required String path}) async {
-    var data = await dio.get('$_baseUrl&apiKey=${BackendEndPoints.apiKey}');
+    Response data;
+    if (path.isNotEmpty || path != '') {
+      data = await dio.get(
+        '$_baseUrl&category=$path&apiKey=${BackendEndPoints.apiKey}',
+      );
+    } else {
+      data = await dio.get('$_baseUrl&apiKey=${BackendEndPoints.apiKey}');
+    }
     return data.data['articles'];
   }
 }

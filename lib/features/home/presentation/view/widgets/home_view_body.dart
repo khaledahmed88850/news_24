@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_24/core/utils/assets.dart';
 import 'package:news_24/core/utils/text_styles.dart';
 import 'package:news_24/features/home/presentation/view/widgets/categories_list.dart';
-import 'package:news_24/features/home/presentation/view/widgets/news_widget.dart';
 
 import 'news_list_view.dart';
 
