@@ -33,9 +33,11 @@ class SignUpView extends StatelessWidget {
               }
             },
             builder: (context, state) {
-              return ModalProgressHUD(
-                inAsyncCall: state is SignUpLoading ? true : false,
-                child: const SignUpViewBody(),
+              return Center(
+                child: ModalProgressHUD(
+                  inAsyncCall: state is SignUpLoading ? true : false,
+                  child: const SignUpViewBody(),
+                ),
               );
             },
           ),

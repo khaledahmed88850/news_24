@@ -13,7 +13,16 @@ class NewsCubit extends Cubit<NewsState> {
     emit(NewsLoading());
     final result = await homeRepo.getNews(category);
     result.fold(
-      (failure) => emit(NewsFailure(message: failure.message)),
+      (failure) => emit(NewsFailure(message: failure.errMesage)),
+      (news) => emit(NewsSuccess(newsList: news)),
+    );
+  }
+
+  Future<void> getNewsBySearch({required String query}) async {
+    emit(NewsLoading());
+    final result = await homeRepo.getNewsBySearch(query);
+    result.fold(
+      (failure) => emit(NewsFailure(message: failure.errMesage)),
       (news) => emit(NewsSuccess(newsList: news)),
     );
   }

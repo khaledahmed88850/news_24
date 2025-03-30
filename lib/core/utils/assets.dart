@@ -14,6 +14,10 @@ class Assets {
   /// assets/images/placeholder.png
   static const String assetsImagesPlaceholder = "assets/images/placeholder.png";
 
+  /// Assets for assetsImagesSplash
+  /// assets/images/splash.png
+  static const String assetsImagesSplash = "assets/images/splash.png";
+
   /// Assets for assetsImagesTest
   /// assets/images/test.jpg
   static const String assetsImagesTest = "assets/images/test.jpg";

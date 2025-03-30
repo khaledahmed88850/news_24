@@ -80,7 +80,7 @@ class NewsWidget extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 5),
         const Divider(color: Color(0xFFEEEEEE), thickness: 2),
       ],
     );

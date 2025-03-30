@@ -11,18 +11,7 @@ import 'package:news_24/features/home/data/repo/home_repo_impl.dart';
 GetIt getIt = GetIt.instance;
 
 void setupGetIt() {
-  Dio dio = Dio();
-  dio.interceptors.add(
-    LogInterceptor(
-      error: true,
-      requestHeader: true,
-      requestBody: true,
-      responseBody: true,
-      request: true,
-      responseHeader: true,
-    ),
-  );
-  getIt.registerSingleton<ApiServices>(ApiServices(dio: dio));
+  getIt.registerSingleton<ApiServices>(ApiServices(dio: setupDio()));
   getIt.registerSingleton<HomeRepo>(
     HomeRepoImpl(apiServices: getIt<ApiServices>()),
   );
@@ -34,4 +23,20 @@ void setupGetIt() {
       firestoreServices: getIt<FirestoreServices>(),
     ),
   );
+}
+
+Dio setupDio() {
+  Dio dio = Dio();
+
+  dio.interceptors.add(
+    LogInterceptor(
+      responseBody: true,
+      requestBody: true,
+      error: true,
+      request: true,
+      requestHeader: false,
+      responseHeader: false,
+    ),
+  );
+  return dio;
 }

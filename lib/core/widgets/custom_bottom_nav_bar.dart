@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_24/core/utils/app_colors.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
@@ -8,14 +9,17 @@ class CustomBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      selectedItemColor: AppColors.kPrimaryColor,
-      currentIndex: index,
-      onTap: onItemTapped,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
-      ],
+    return SizedBox(
+      height: 70.h,
+      child: BottomNavigationBar(
+        selectedItemColor: AppColors.kPrimaryColor,
+        currentIndex: index,
+        onTap: onItemTapped,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
+        ],
+      ),
     );
   }
 }

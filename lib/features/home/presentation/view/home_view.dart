@@ -7,15 +7,11 @@ import 'package:news_24/features/home/presentation/view/widgets/home_view_body.d
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
-  static const String routeName = '/home';
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: BlocProvider(
-        create:
-            (context) => NewsCubit(getIt<HomeRepo>())..getNews(category: ''),
-        child: const HomeViewBody(),
-      ),
+    return BlocProvider(
+      create: (context) => NewsCubit(getIt<HomeRepo>())..getNews(category: ''),
+      child: const HomeViewBody(),
     );
   }
 }

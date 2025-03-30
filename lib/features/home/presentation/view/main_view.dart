@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_24/core/helpers/index_stack_provider.dart';
 import 'package:news_24/core/widgets/custom_bottom_nav_bar.dart';
 import 'package:news_24/features/home/presentation/view/home_view.dart';
+import 'package:news_24/features/home/presentation/view/search_view.dart';
 import 'package:provider/provider.dart';
 
 class MainView extends StatefulWidget {
@@ -24,9 +25,14 @@ class _MainViewState extends State<MainView> {
           indexedStack.setIndex(value);
         },
       ),
-      body: IndexedStack(index: indexedStack.currentIndex, children: screens),
+      body: SafeArea(
+        child: IndexedStack(
+          index: indexedStack.currentIndex,
+          children: screens,
+        ),
+      ),
     );
   }
 
-  List<Widget> screens = [const HomeView(), const Text('Search')];
+  List<Widget> screens = [const HomeView(), const SearchView()];
 }

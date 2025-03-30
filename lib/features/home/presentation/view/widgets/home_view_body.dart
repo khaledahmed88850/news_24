@@ -16,6 +16,7 @@ class HomeViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: CustomScrollView(
         slivers: [
+          const SliverToBoxAdapter(child: SizedBox(height: 10)),
           SliverAppBar(
             automaticallyImplyLeading: false,
             centerTitle: true,
@@ -35,7 +36,7 @@ class HomeViewBody extends StatelessWidget {
               ],
             ),
           ),
-          const SliverToBoxAdapter(child: SizedBox(height: 20)),
+          const SliverToBoxAdapter(child: SizedBox(height: 15)),
           SliverToBoxAdapter(
             child: SizedBox(
               height: 40.h,
