@@ -11,32 +11,34 @@ class SignUpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: BlocConsumer<SignUpCubit, SignUpState>(
-          listener: (context, state) {
-            if (state is SignUpSuccess) {
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  backgroundColor: AppColors.kPrimaryColor,
-                  content: Text('Email registered successfully'),
-                ),
+      body: SafeArea(
+        child: Center(
+          child: BlocConsumer<SignUpCubit, SignUpState>(
+            listener: (context, state) {
+              if (state is SignUpSuccess) {
+                Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    backgroundColor: AppColors.kPrimaryColor,
+                    content: Text('Email registered successfully'),
+                  ),
+                );
+              } else if (state is SignUpFailure) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    backgroundColor: Colors.black54,
+                    content: Text(state.message),
+                  ),
+                );
+              }
+            },
+            builder: (context, state) {
+              return ModalProgressHUD(
+                inAsyncCall: state is SignUpLoading ? true : false,
+                child: const SignUpViewBody(),
               );
-            } else if (state is SignUpFailure) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  backgroundColor: Colors.black54,
-                  content: Text(state.message),
-                ),
-              );
-            }
-          },
-          builder: (context, state) {
-            return ModalProgressHUD(
-              inAsyncCall: state is SignUpLoading ? true : false,
-              child: const SignUpViewBody(),
-            );
-          },
+            },
+          ),
         ),
       ),
     );

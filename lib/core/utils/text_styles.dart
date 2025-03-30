@@ -6,6 +6,14 @@ abstract class Styles {
     fontSize: 18.sp,
     fontWeight: FontWeight.w700,
   );
+  static TextStyle bold15 = TextStyle(
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle bold14 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w700,
+  );
   static TextStyle medium14 = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,

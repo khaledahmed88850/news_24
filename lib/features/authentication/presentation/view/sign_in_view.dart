@@ -11,26 +11,28 @@ class SignInView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: BlocConsumer<SignInCubit, SignInState>(
-          listener: (context, state) {
-            if (state is SignInSuccess) {
-              Navigator.pushReplacementNamed(context, HomeView.routeName);
-            } else if (state is SignInFailure) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  backgroundColor: Colors.black54,
-                  content: Text(state.message),
-                ),
+      body: SafeArea(
+        child: Center(
+          child: BlocConsumer<SignInCubit, SignInState>(
+            listener: (context, state) {
+              if (state is SignInSuccess) {
+                Navigator.pushReplacementNamed(context, HomeView.routeName);
+              } else if (state is SignInFailure) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    backgroundColor: Colors.black54,
+                    content: Text(state.message),
+                  ),
+                );
+              }
+            },
+            builder: (context, state) {
+              return ModalProgressHUD(
+                inAsyncCall: state is SignInLoading ? true : false,
+                child: const SignInViewBody(),
               );
-            }
-          },
-          builder: (context, state) {
-            return ModalProgressHUD(
-              inAsyncCall: state is SignInLoading ? true : false,
-              child: const SignInViewBody(),
-            );
-          },
+            },
+          ),
         ),
       ),
     );
